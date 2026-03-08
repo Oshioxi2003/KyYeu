@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỷ Yếu 12A6</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Be+Vietnam+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--pink:#ff4e9b;
+--soft:#fff0f6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Be Vietnam Pro',sans-serif;
+overflow-x:hidden;
+}
+
+/* MENU */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:35px;
+padding:18px;
+background:#ffb6d9;
+z-index:1000;
+}
+
+nav a{
+color:white;
+font-weight:700;
+cursor:pointer;
+text-decoration:none;
+}
+
+/* SECTION */
+
+section{
+display:none;
+padding:140px 8% 60px;
+min-height:100vh;
+}
+
+.active{
+display:block;
+}
+
+/* ================= HOME ================= */
+
+#home{
+background:linear-gradient(#ffb6d9,#ff4e9b);
+text-align:center;
+color:white;
+}
+
+/* hoa rơi */
+
+.petal{
+position:fixed;
+top:-20px;
+width:15px;
+height:15px;
+background:radial-gradient(circle,#fff,#ff69b4);
+border-radius:50%;
+opacity:0.8;
+animation:fall linear infinite;
+z-index:0;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* year */
+
+.year-select{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.year{
+position:relative;
+}
+
+.year img{
+width:220px;
+height:160px;
+object-fit:cover;
+border-radius:20px;
+cursor:pointer;
+transition:.4s;
+}
+
+.year img:hover{
+transform:scale(1.1);
+}
+
+.year span{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,0.6);
+padding:6px 16px;
+border-radius:20px;
+font-weight:bold;
+}
+
+/* carousel */
+
+.carousel{
+margin-top:60px;
+overflow:hidden;
+}
+
+.carousel-track{
+display:flex;
+animation:slide 25s linear infinite;
+}
+
+.carousel img{
+width:300px;
+height:200px;
+object-fit:cover;
+margin:10px;
+border-radius:15px;
+flex-shrink:0;
+}
+
+@keyframes slide{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+/* ================= CLASS LIST ================= */
+
+#classlist{
+background:#fdfbfb;
+}
+
+.class-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:30px;
+}
+
+.student{
+background:#ffb6d9;
+padding:15px;
+border-radius:12px;
+text-align:center;
+cursor:pointer;
+color:white;
+font-weight:bold;
+transition:.3s;
+}
+
+.student:hover{
+background:#ff4e9b;
+transform:scale(1.05);
+}
+
+.student img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:8px;
+}
+
+/* ================= ACTIVITY ================= */
+
+#activity{
+background:#fdfbfb;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:30px;
+}
+
+.gallery img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.achievement{
+margin-top:40px;
+text-align:center;
+}
+
+.achievement button{
+margin:10px;
+padding:10px 25px;
+border:none;
+background:var(--pink);
+color:white;
+border-radius:20px;
+cursor:pointer;
+font-size:1rem;
+transition:.3s;
+}
+
+.achievement button:hover{
+background:#e0437f;
+transform:scale(1.05);
+}
+
+/* ================= MEMBER ================= */
+
+#member{
+background:#f8f9fa;
+}
+
+.member-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:30px;
+}
+
+.card{
+padding:20px;
+border-radius:15px;
+margin:10px;
+color:white;
+cursor:pointer;
+transition:.3s;
+text-align:center;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+/* ================= TEACHER ================= */
+
+#teacher{
+background:#fdfbfb;
+}
+
+.teacher-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.teacher-grid img{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.thank{
+margin-top:60px;
+padding:40px;
+background:#ffe6f2;
+border-radius:20px;
+text-align:center;
+font-family:'Dancing Script';
+font-size:2rem;
+color:var(--pink);
+}
+
+/* profile */
+
+.profile{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.85);
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+color:white;
+z-index:2000;
+overflow-y:auto;
+padding:20px;
+}
+
+.profile h2{
+margin-bottom:10px;
+font-size:1.8rem;
+}
+
+.profile p{
+margin-bottom:15px;
+font-size:1.1rem;
+opacity:0.9;
+}
+
+.profile-images{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.profile-images img{
+width:250px;
+height:350px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.close{
+padding:10px 25px;
+background:var(--pink);
+border:none;
+color:white;
+border-radius:20px;
+cursor:pointer;
+font-size:1rem;
+}
+
+.close:hover{
+background:#e0437f;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<a onclick="show('home')">Trang Chủ</a>
+<a onclick="show('classlist')">Danh Sách Lớp</a>
+<a onclick="show('activity')">Hoạt Động</a>
+<a onclick="show('member')">Thành Viên</a>
+<a onclick="show('teacher')">Thầy Cô</a>
+</nav>
+
+<!-- HOME -->
+
+<section id="home" class="active">
+
+<h1 style="font-family:'Dancing Script';font-size:4rem">
+✨ KỶ YẾU 12A6 ✨
+</h1>
+
+<h2 style="margin-top:40px">Chọn Năm Học</h2>
+
+<div class="year-select">
+
+<div class="year">
+<img src="media/trangchu/lop10.jpg" onclick="show('activity')">
+<span>LỚP 10</span>
+</div>
+
+<div class="year">
+<img src="media/trangchu/lop11.jpg" onclick="show('activity')">
+<span>LỚP 11</span>
+</div>
+
+<div class="year">
+<img src="media/trangchu/lop12.jpg" onclick="show('activity')">
+<span>LỚP 12</span>
+</div>
+
+</div>
+
+<div class="carousel">
+<div class="carousel-track">
+
+<img src="media/trangchu/bangchuyen/1.jpg">
+<img src="media/trangchu/bangchuyen/2.jpg">
+<img src="media/trangchu/bangchuyen/3.jpg">
+<img src="media/trangchu/bangchuyen/4.jpg">
+<img src="media/trangchu/bangchuyen/5.jpg">
+<img src="media/trangchu/bangchuyen/6.jpg">
+<img src="media/trangchu/bangchuyen/7.jpg">
+<img src="media/trangchu/bangchuyen/8.jpg">
+<img src="media/trangchu/bangchuyen/9.jpg">
+<img src="media/trangchu/bangchuyen/10.jpg">
+<img src="media/trangchu/bangchuyen/11.jpg">
+<img src="media/trangchu/bangchuyen/12.jpg">
+
+<!-- lặp lại cho carousel liền mạch -->
+<img src="media/trangchu/bangchuyen/1.jpg">
+<img src="media/trangchu/bangchuyen/2.jpg">
+<img src="media/trangchu/bangchuyen/3.jpg">
+<img src="media/trangchu/bangchuyen/4.jpg">
+<img src="media/trangchu/bangchuyen/5.jpg">
+<img src="media/trangchu/bangchuyen/6.jpg">
+<img src="media/trangchu/bangchuyen/7.jpg">
+<img src="media/trangchu/bangchuyen/8.jpg">
+<img src="media/trangchu/bangchuyen/9.jpg">
+<img src="media/trangchu/bangchuyen/10.jpg">
+<img src="media/trangchu/bangchuyen/11.jpg">
+<img src="media/trangchu/bangchuyen/12.jpg">
+
+</div>
+</div>
+
+</section>
+
+<!-- DANH SÁCH LỚP -->
+
+<section id="classlist">
+
+<h1 style="text-align:center;color:#ff4e9b">
+📋 Danh Sách Lớp 12A6
+</h1>
+
+<div class="class-grid" id="classGrid"></div>
+
+</section>
+
+<!-- HOẠT ĐỘNG -->
+
+<section id="activity">
+
+<h1 style="text-align:center;color:#ff4e9b">🎬 Hoạt Động 12A6</h1>
+
+<div class="gallery">
+
+<img src="media/trangchu/bangchuyen/1.jpg">
+<img src="media/trangchu/bangchuyen/2.jpg">
+<img src="media/trangchu/bangchuyen/3.jpg">
+<img src="media/trangchu/bangchuyen/4.jpg">
+<img src="media/trangchu/bangchuyen/5.jpg">
+<img src="media/trangchu/bangchuyen/6.jpg">
+<img src="media/trangchu/bangchuyen/7.jpg">
+<img src="media/trangchu/bangchuyen/8.jpg">
+<img src="media/trangchu/bangchuyen/9.jpg">
+<img src="media/trangchu/bangchuyen/10.jpg">
+<img src="media/trangchu/bangchuyen/11.jpg">
+<img src="media/trangchu/bangchuyen/12.jpg">
+
+</div>
+
+<div class="achievement">
+
+<h2>🏆 Thành Tựu 12A6</h2>
+
+<button onclick="showStudy()">📚 Học Tập</button>
+<button onclick="showPlay()">🎉 Vui Chơi</button>
+
+<div class="gallery" id="achievementGallery"></div>
+
+</div>
+
+</section>
+
+<!-- THÀNH VIÊN -->
+
+<section id="member">
+
+<h1 style="text-align:center;color:#ff4e9b">
+👑 43 Thành Viên
+</h1>
+
+<div class="member-grid" id="list"></div>
+
+</section>
+
+<!-- THẦY CÔ -->
+
+<section id="teacher">
+
+<h1 style="text-align:center;color:#ff4e9b">
+🌸 Thầy Cô Đồng Hành
+</h1>
+
+<h2>3 Cô Chủ Nhiệm</h2>
+
+<div class="teacher-grid">
+
+<div style="text-align:center">
+<img src="media/thayco/gvcnlop10.jpg">
+<p>Cô Nguyễn Thị Nhị Kiều</p>
+</div>
+
+<div style="text-align:center">
+<img src="media/thayco/gvcnlop11.jpg">
+<p>Cô Lê Thị Thúy Nga</p>
+</div>
+
+<div style="text-align:center">
+<img src="media/thayco/gvcnlop12.jpg">
+<p>Cô Trần Thị Thủy</p>
+</div>
+
+</div>
+
+<h2 style="margin-top:40px">
+15 Giáo Viên Bộ Môn
+</h2>
+
+<div class="teacher-grid">
+
+<img src="media/thayco/gvbm1.jpg">
+<img src="media/thayco/gvbm2.jpg">
+<img src="media/thayco/gvbm3.jpg">
+<img src="media/thayco/gvbm4.jpg">
+<img src="media/thayco/gvbm5.jpg">
+<img src="media/thayco/gvbm6.jpg">
+<img src="media/thayco/gvbm7.jpg">
+<img src="media/thayco/gvbm8.jpg">
+<img src="media/thayco/gvbm9.jpg">
+<img src="media/thayco/gvbm10.jpg">
+<img src="media/thayco/gvbm11.jpg">
+<img src="media/thayco/gvbm12.jpg">
+<img src="media/thayco/gvbm13.jpg">
+<img src="media/thayco/gvbm14.jpg">
+<img src="media/thayco/gvbm15.jpg">
+</div>
+
+<div class="thank">
+
+Cảm ơn thầy cô đã luôn yêu thương, dìu dắt và đồng hành cùng 12A6.
+Ba năm thanh xuân rực rỡ có dấu ấn của thầy cô trong từng khoảnh khắc.
+💖 12A6 mãi biết ơn 💖
+
+</div>
+
+</section>
+
+<!-- PROFILE -->
+
+<div class="profile" id="profile">
+
+<h2 id="name"></h2>
+
+<p id="slogan"></p>
+
+<div class="profile-images" id="images"></div>
+
+<button class="close" onclick="closeProfile()">
+Quay Lại
+</button>
+
+</div>
+
+<script>
+
+/* ===== DỮ LIỆU ===== */
+
+const students = [
+    "Vũ Ngọc Anh (19/11/2008)",
+    "Hồ Mỹ Trâm Anh (11/7/2008)",
+    "Mai Thị Ngọc Bích (12/01/2008)",
+    "Hồ Tuấn Cường (05/12/2007)",
+    "Nguyễn Huỳnh Minh Đăng (16/02/2008)",
+    "Trần Gia Hào (13/08/2008)",
+    "Hứa Yến Hân (05/10/2008)",
+    "Lương Thu Hiền (26/07/2008)",
+    "Hong Gia Huy (20/02/2008)",
+    "Nguyễn Minh Hưng (23/01/2008)",
+    "Trần Hạo Khang (17/01/2008)",
+    "Nguyễn Nhật Anh Khoa (05/03/2008)",
+    "Trần Cao Ngọc Lan (16/07/2008)",
+    "Đinh Ngọc Thảo My (21/11/2008)",
+    "Lê Thị Huyền My (20/12/2008)",
+    "Trần Thế Hoài Nam (20/04/2008)",
+    "Võ Huỳnh Phương Nghi (21/02/2008)",
+    "Trần Ngọc Thảo Nguyên (26/06/2008)",
+    "Bùi Nguyễn Thanh Nhật (07/01/2008)",
+    "Phạm Thị Xuân Nhi (21/07/2008)",
+    "Trần Thị Yến Nhi (20/01/2008)",
+    "Đinh Nguyễn Hồng Nhung (23/10/2008)",
+    "Nguyễn Nhất Phi (25/11/2008)",
+    "Lê Quang Hoàng Phúc (05/02/2008)",
+    "Nguyễn Phan Bảo Phương (12/11/2008)",
+    "Vũ Thị Phương (07/01/2008)",
+    "Trần Phú Quí (25/06/2008)",
+    "Nguyễn Hoàng Samuen (21/08/2008)",
+    "Nguyễn Thị Tâm (28/08/2008)",
+    "Nguyễn Công Tuấn Thái (02/10/2008)",
+    "Võ Thanh Thiện (13/07/2008)",
+    "Phạm Thị Thủy (29/06/2008)",
+    "Thân Bảo Thy (08/04/2008)",
+    "Nguyễn Hữu Tình (06/01/2008)",
+    "Hồ Huyền Trang (21/07/2008)",
+    "Trần Thị Đoan Trang (30/07/2008)",
+    "Nguyễn Thị Ngọc Trâm (25/03/2008)",
+    "Châu Nhật Vy (10/05/2008)",
+    "Nguyễn Lê Vy (30/06/2008)",
+    "Trần Huỳnh Khánh Vy (13/08/2008)",
+    "Trần Ngọc Thảo Vy (28/01/2008)",
+    "Phan Như Ý (08/01/2008)",
+    "Phan Bảo Yến (10/11/2008)"
+]
+
+/* Mapping: index trong mảng students → tên folder trong media/hocsinh/ */
+const folderMap = {
+    0:  "NgocAnh",
+    1:  "TramAnh",
+    2:  "NgocBich",
+    3:  "TuanCuong",
+    4:  "MinhDang",
+    5:  "GiaHao",
+    6:  "YenHan",
+    7:  "ThuHien",
+    8:  "GiaHuy",
+    9:  "MinhHung",
+    10: "HaoKhang",
+    11: null,           // Anh Khoa - chưa có folder
+    12: "NgocLan",
+    13: "ThaoMy",
+    14: "HuyenMy",
+    15: "HoaiNam",
+    16: "PhuongNghi",
+    17: null,           // Thảo Nguyên - chưa có folder
+    18: "ThanhNhat",
+    19: "XuanNhi",
+    20: "YenNhi",
+    21: "HongNhung",
+    22: "NhatPhi",
+    23: "HoangPhuc",
+    24: "BaoPhuong",
+    25: "VuThiPhuong",
+    26: "PhuQui",
+    27: "Samuel",
+    28: "NguyenThiTam",
+    29: "TuanThai",
+    30: "ThanhThien",
+    31: "PhamThiThuy",
+    32: "BaoThy",
+    33: "HuuTinh",
+    34: "HuyenTrang",
+    35: "DoanTrang",
+    36: "NgocTram",
+    37: "NhatVy",
+    38: "LeVy",
+    39: "KhanhVy",
+    40: "ThaoVy",
+    41: "NhuY",
+    42: "BaoYen"
+}
+
+/* Các folder có subfolder "image/" (ảnh nằm trong image/) */
+const hasImageSubfolder = [
+    "NgocAnh", "TramAnh", "YenHan", "ThuHien",
+    "DoanTrang", "HongNhung", "HuyenMy", "NguyenThiTam"
+]
+
+/* NgocAnh có tên file đặc biệt: 1_1.jpg.jpg, 2_2.jpg.jpg, 3_3.jpg.jpg */
+const specialFileNames = {
+    "NgocAnh": ["1_1.jpg.jpg", "2_2.jpg.jpg", "3_3.jpg.jpg"]
+}
+
+/* Hàm lấy đường dẫn ảnh cho mỗi học sinh */
+function getStudentImages(index) {
+    const folder = folderMap[index]
+    if (!folder) return [] // chưa có folder
+
+    const hasSubfolder = hasImageSubfolder.includes(folder)
+    const special = specialFileNames[folder]
+
+    if (special) {
+        // NgocAnh: media/hocsinh/NgocAnh/image/1_1.jpg.jpg ...
+        return special.map(f => `media/hocsinh/${folder}/image/${f}`)
+    }
+
+    if (hasSubfolder) {
+        return [
+            `media/hocsinh/${folder}/image/1.jpg`,
+            `media/hocsinh/${folder}/image/2.jpg`,
+            `media/hocsinh/${folder}/image/3.jpg`
+        ]
+    }
+
+    return [
+        `media/hocsinh/${folder}/1.jpg`,
+        `media/hocsinh/${folder}/2.jpg`,
+        `media/hocsinh/${folder}/3.jpg`
+    ]
+}
+
+const slogans = [
+    "Thanh xuân rực rỡ",
+    "Không ngừng cố gắng",
+    "Mãi là 12A6",
+    "Dream big",
+    "Toả sáng theo cách riêng",
+    "Sống hết mình",
+    "Tuổi trẻ đáng giá",
+    "Never give up",
+    "Chinh phục ước mơ",
+    "Hạnh phúc mỗi ngày"
+]
+
+/* ===== CHUYỂN TRANG ===== */
+
+function show(id) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"))
+    document.getElementById(id).classList.add("active")
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+/* ===== HOA RƠI ===== */
+
+for (let i = 0; i < 40; i++) {
+    let p = document.createElement("div")
+    p.className = "petal"
+    p.style.left = Math.random() * 100 + "vw"
+    p.style.animationDuration = 5 + Math.random() * 5 + "s"
+    p.style.animationDelay = Math.random() * 5 + "s"
+    document.body.appendChild(p)
+}
+
+/* ===== DANH SÁCH LỚP (grid) ===== */
+
+const grid = document.getElementById("classGrid")
+
+for (let i = 0; i < students.length; i++) {
+    let s = document.createElement("div")
+    s.className = "student"
+
+    const imgs = getStudentImages(i)
+    if (imgs.length > 0) {
+        let img = document.createElement("img")
+        img.src = imgs[0]
+        img.alt = students[i]
+        img.onerror = function() { this.style.display = 'none' }
+        s.appendChild(img)
+    }
+
+    let text = document.createElement("div")
+    text.innerHTML = `<p><strong>${students[i]}</strong></p><p>${slogans[i % 10]}</p>`
+    s.appendChild(text)
+
+    s.onclick = () => {
+        show("member")
+        openProfile(i, slogans[i % 10])
+    }
+
+    grid.appendChild(s)
+}
+
+/* ===== THÀNH VIÊN (cards) ===== */
+
+const list = document.getElementById("list")
+
+for (let i = 0; i < students.length; i++) {
+    let div = document.createElement("div")
+    div.className = "card"
+    div.style.background = `hsl(${i * 8 + 320}, 70%, 60%)`
+
+    const imgs = getStudentImages(i)
+    const thumbSrc = imgs.length > 0 ? imgs[0] : ''
+
+    div.innerHTML = `
+        ${thumbSrc ? `<img src="${thumbSrc}" style="width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:8px" onerror="this.style.display='none'" alt="${students[i]}">` : ''}
+        <h3>${students[i]}</h3>
+        <p>${slogans[i % 10]}</p>
+    `
+    div.onclick = () => openProfile(i, slogans[i % 10])
+    list.appendChild(div)
+}
+
+/* ===== PROFILE ===== */
+
+function openProfile(i, slogan) {
+    document.getElementById("profile").style.display = "flex"
+    document.getElementById("name").innerText = students[i]
+    document.getElementById("slogan").innerText = slogan
+
+    const imgs = getStudentImages(i)
+
+    if (imgs.length === 0) {
+        document.getElementById("images").innerHTML = "<p>Chưa có ảnh</p>"
+        return
+    }
+
+    let html = ""
+    for (const src of imgs) {
+        html += `<img src="${src}" alt="${students[i]}" onerror="this.style.display='none'">`
+    }
+    document.getElementById("images").innerHTML = html
+}
+
+function closeProfile() {
+    document.getElementById("profile").style.display = "none"
+}
+
+/* ===== THÀNH TỰU ===== */
+
+function showStudy() {
+    let g = document.getElementById("achievementGallery")
+    g.innerHTML = ""
+    for (let i = 1; i <= 18; i++) {
+        g.innerHTML += `<img src="media/hoatdong/hoctap/${i}.jpg" onerror="this.style.display='none'">`
+    }
+}
+
+function showPlay() {
+    let g = document.getElementById("achievementGallery")
+    g.innerHTML = ""
+    for (let i = 1; i <= 17; i++) {
+        g.innerHTML += `<img src="media/hoatdong/vuichoi/${i}.jpg" onerror="this.style.display='none'">`
+    }
+}
+
+</script>
+
+
+</body>
+</html>
